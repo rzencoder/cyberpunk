@@ -1,8 +1,8 @@
-# Sonic the Hedgehog Javascript Game
+# Cyberpunk Javascript Game
 
-Demo: https://rzencoder.github.io/sonic-hedgehog-game/
+Demo: https://rzencoder.github.io/cyberpunk/
 
-Made a platform game to practice Javascript skills using the phaser.io framework
+Added different assets to my previous Sonic game. Created this platform game to help me learn object-orientated Javascript using the phaser.io framework.
 
 Controls:
   * Left-Arrow: Move Left

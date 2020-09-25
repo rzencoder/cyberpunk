@@ -14,7 +14,7 @@ export default class Hero extends Phaser.Sprite {
     this.animations.add("run-right", [0, 1, 2, 3, 4, 5, 6, 7, 8], 15, true);
     this.animations.add("run-left", [0, 1, 2, 3, 4, 5, 6, 7, 8], 15, true);
     this.animations.add("jump", [9, 10, 11, 12], 15, true);
-    this.animations.add("die", [17, 18], 15);
+    this.animations.add("die", [17, 18, 19, 20, 21], 25);
     this.animations.add("hurt", [17]); // 12fps no loop
     this.animations.play("stop");
   }
@@ -25,12 +25,16 @@ export default class Hero extends Phaser.Sprite {
     }
     if (this.hurt) {
       if (this.body.velocity.x > 0) {
-        this.body.velocity.x = 100;
-        this.body.velocity.y = -100;
+        this.body.velocity.x = 200;
+        this.body.velocity.y = -50;
       } else {
-        this.body.velocity.x = -100;
-        this.body.velocity.y = -100;
+        this.body.velocity.x = -50;
+        this.body.velocity.y = -50;
       }
+      this.body.enable = false;
+      setTimeout(() => {
+        this.body.enable = true;
+      }, 500);
     }
     this.body.velocity.x = direction * 200;
     // update image flipping & animations
@@ -44,7 +48,7 @@ export default class Hero extends Phaser.Sprite {
   jump(springSpeed) {
     let canJump =
       this.body.touching.down && this.alive && !this.isFrozen && !this.hurt;
-    const JUMP_SPEED = 550;
+    const JUMP_SPEED = 650;
     if (canJump || this.isBoosting) {
       this.body.velocity.y = -springSpeed || -JUMP_SPEED;
       this.isBoosting = true;

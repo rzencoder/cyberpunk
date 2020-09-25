@@ -27,12 +27,17 @@ export default class LoadingState {
       "../../assets/images/finish-static.png"
     );
     this.game.load.image("spike", "../../assets/images/spike1.png");
-    this.game.load.image("spike3", "../../assets/images/spike3.png");
-    this.game.load.image(
+    this.game.load.spritesheet(
+      "spike3",
+      "../../assets/images/flame.png",
+      30,
+      38
+    );
+    this.game.load.spritesheet(
       "fireball",
-      "../../assets/images/fireball.png",
-      15,
-      32
+      "../../assets/images/shot.png",
+      16,
+      22
     );
     // animations
     this.game.load.spritesheet(
@@ -42,13 +47,13 @@ export default class LoadingState {
       52
     );
     this.game.load.spritesheet("bug", "../../assets/images/bug.png", 40, 30);
-    this.game.load.spritesheet("bat", "../../assets/images/bat.png", 30, 30);
-    this.game.load.spritesheet("ring", "../../assets/images/ring.png", 16, 16);
+    this.game.load.spritesheet("bat", "../../assets/images/drone.png", 40, 38);
+    this.game.load.spritesheet("ring", "../../assets/images/orb.png", 24, 24);
     this.game.load.spritesheet(
       "finish",
-      "../../assets/images/finish.png",
-      45,
-      64
+      "../../assets/images/arrow.png",
+      32,
+      68
     );
     this.game.load.spritesheet(
       "spring",
@@ -59,14 +64,14 @@ export default class LoadingState {
     this.game.load.spritesheet("lava", "../../assets/images/lava2.png", 42, 42);
 
     // audio
-    this.game.load.audio("sfx:jump", "../../assets/audio/jump.wav");
+    this.game.load.audio("sfx:jump", "../../assets/audio/jump2.wav");
     this.game.load.audio("sfx:spring", "../../assets/audio/spring.wav");
-    this.game.load.audio("sfx:ring", "../../assets/audio/ring.wav");
+    this.game.load.audio("sfx:ring", "../../assets/audio/ping.wav");
     this.game.load.audio("sfx:pop", "../../assets/audio/pop.wav");
     this.game.load.audio("sfx:finish", "../../assets/audio/finish.wav");
     this.game.load.audio("sfx:dead", "../../assets/audio/dead.wav");
-    this.game.load.audio("bgm", "../../assets/audio/bck.mp3");
-    this.game.load.audio("sfx:hurt", "../../assets/audio/hurt.wav");
+    this.game.load.audio("bgm", "../../assets/audio/synth.wav");
+    this.game.load.audio("sfx:hurt", "../../assets/audio/pain.ogg");
   }
 
   create() {
