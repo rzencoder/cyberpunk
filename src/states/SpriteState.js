@@ -1,8 +1,8 @@
 import Hero from "../sprites/Hero";
-import Spike from "../sprites/Spike";
+import Flame from "../sprites/Flame";
 import Enemy from "../sprites/Enemy";
 import Block from "../sprites/Block";
-import Fireball from "../sprites/Fireball";
+import Blast from "../sprites/Blast";
 
 export default class SpriteState {
   spawnCharacters(data) {
@@ -38,8 +38,8 @@ export default class SpriteState {
     this.movingBlocks.add(sprite);
   }
 
-  spawnLava(lava) {
-    let sprite = this.lava.create(lava.x, lava.y, lava.image);
+  spawnOil(oil) {
+    let sprite = this.oil.create(oil.x, oil.y, oil.image);
     this.game.physics.enable(sprite);
     sprite.body.allowGravity = false;
     sprite.body.immovable = true;
@@ -48,23 +48,23 @@ export default class SpriteState {
     sprite.animations.play("flow");
   }
 
-  spawnFireball(data) {
-    data.fireball.forEach(function (ball) {
-      let sprite = new Fireball(
+  spawnBlast(data) {
+    data.blast.forEach(function (blast) {
+      let sprite = new Blast(
         this.game,
-        ball.x,
-        ball.y,
-        ball.height,
-        ball.velocity
+        blast.x,
+        blast.y,
+        blast.height,
+        blast.velocity
       );
-      this.fireball.add(sprite);
+      this.blast.add(sprite);
     }, this);
   }
 
-  spawnSpike(data) {
-    data.spike.forEach(function (s) {
-      let sprite = new Spike(this.game, s.x, s.y, s.image, s.duration);
-      this.spike.add(sprite);
+  spawnFlame(data) {
+    data.flame.forEach(function (s) {
+      let sprite = new Flame(this.game, s.x, s.y, s.image, s.duration);
+      this.flame.add(sprite);
     }, this);
   }
 
@@ -77,8 +77,8 @@ export default class SpriteState {
     sprite.body.allowGravity = false;
   }
 
-  spawnRings(ring) {
-    let sprite = this.rings.create(ring.x, ring.y, "ring");
+  spawnEnergy(energy) {
+    let sprite = this.energy.create(energy.x, energy.y, "energy");
     sprite.anchor.set(0.5, 0.5);
     this.game.physics.enable(sprite);
     sprite.body.allowGravity = false;
@@ -94,12 +94,5 @@ export default class SpriteState {
     sprite.body.allowGravity = false;
     sprite.animations.add("open", [0, 1, 2, 3], 5, true);
     sprite.animations.play("open");
-  }
-
-  spawnSpring(spring) {
-    let sprite = this.spring.create(spring.x, spring.y, "spring");
-    this.game.physics.enable(sprite);
-    sprite.body.allowGravity = false;
-    sprite.animations.add("jump", [0, 1, 0], 12);
   }
 }

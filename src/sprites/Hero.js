@@ -10,12 +10,12 @@ export default class Hero extends Phaser.Sprite {
     this.game.physics.enable(this);
     this.body.collideWorldBounds = true;
     // animations
-    this.animations.add("stop", [13, 14, 15, 16], 8, true);
-    this.animations.add("run-right", [0, 1, 2, 3, 4, 5, 6, 7, 8], 15, true);
-    this.animations.add("run-left", [0, 1, 2, 3, 4, 5, 6, 7, 8], 15, true);
-    this.animations.add("jump", [9, 10, 11, 12], 15, true);
-    this.animations.add("die", [17, 18, 19, 20, 21], 25);
-    this.animations.add("hurt", [17]); // 12fps no loop
+    this.animations.add("stop", [12, 13, 14, 15], 8, true);
+    this.animations.add("run-right", [0, 1, 2, 3, 4, 5, 6, 7], 15, true);
+    this.animations.add("run-left", [0, 1, 2, 3, 4, 5, 6, 7], 15, true);
+    this.animations.add("jump", [8, 9, 10, 11], 15, true);
+    this.animations.add("die", [16, 17, 18, 19, 20], 25);
+    this.animations.add("hurt", [16]); // 12fps no loop
     this.animations.play("stop");
   }
   move(direction) {
@@ -48,7 +48,7 @@ export default class Hero extends Phaser.Sprite {
   jump(springSpeed) {
     let canJump =
       this.body.touching.down && this.alive && !this.isFrozen && !this.hurt;
-    const JUMP_SPEED = 650;
+    const JUMP_SPEED = 470;
     if (canJump || this.isBoosting) {
       this.body.velocity.y = -springSpeed || -JUMP_SPEED;
       this.isBoosting = true;

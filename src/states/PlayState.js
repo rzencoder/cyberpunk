@@ -13,7 +13,6 @@ export default class PlayState extends SpriteState {
     this.ringCount = 0;
     this.score = 0;
     this.level = (data.level || 0) % LEVEL_COUNT;
-    this.timeCount = 0;
     this.bgm = this.game.add.audio("bgm");
     this.bgm.loopFull();
   }
@@ -24,10 +23,8 @@ export default class PlayState extends SpriteState {
     // create sound entities
     this.sfx = {
       jump: this.game.add.audio("sfx:jump"),
-      spring: this.game.add.audio("sfx:spring"),
-      ring: this.game.add.audio("sfx:ring"),
-      pop: this.game.add.audio("sfx:pop"),
-      finish: this.game.add.audio("sfx:finish"),
+      energy: this.game.add.audio("sfx:energy"),
+      destroy: this.game.add.audio("sfx:destroy"),
       hurt: this.game.add.audio("sfx:hurt"),
       dead: this.game.add.audio("sfx:dead"),
     };
@@ -35,24 +32,8 @@ export default class PlayState extends SpriteState {
     // create level entities and decoration
     this.game.add.image(0, 0, "background");
     this.loadLevel(this.game.cache.getJSON(`level:${this.level}`));
-    // Start time
-    this.game.time.events.loop(Phaser.Timer.SECOND, this.updateTime, this);
     // create UI score boards
     this.createHud();
-  }
-
-  updateTime() {
-    this.timeCount++;
-  }
-
-  formatTime() {
-    let mins = Math.floor(this.timeCount / 60);
-    let secs = this.timeCount % 60;
-    if (secs < 10) {
-      secs = "0" + secs;
-    }
-    let formatted = mins + ":" + secs;
-    return formatted;
   }
 
   update() {
@@ -61,7 +42,6 @@ export default class PlayState extends SpriteState {
     // update scoreboards
     this.scoreNumber.text = `${this.score}`;
     this.ringNumber.text = `${this.ringCount}`;
-    this.timeNumber.text = `${this.formatTime()}`;
   }
 
   shutdown() {
@@ -84,42 +64,34 @@ export default class PlayState extends SpriteState {
       null,
       this
     );
-    // collision: lava
+    // collision: oil
     this.game.physics.arcade.collide(
       this.hero,
-      this.lava,
+      this.oil,
       this.handleDamage,
       null,
       this
     );
-    // collision: spring
+    // collision: blast
     this.game.physics.arcade.overlap(
       this.hero,
-      this.spring,
-      this.onHeroVsSpring,
-      null,
-      this
-    );
-    // collision: fireball
-    this.game.physics.arcade.overlap(
-      this.hero,
-      this.fireball,
+      this.blast,
       this.handleDamage,
       null,
       this
     );
-    // collision: spikes
+    // collision: flames
     this.game.physics.arcade.overlap(
       this.hero,
-      this.spike,
+      this.flame,
       this.handleDamage,
       null,
       this
     );
-    // collision: rings
+    // collision: energy
     this.game.physics.arcade.overlap(
       this.hero,
-      this.rings,
+      this.energy,
       this.onHeroVsRing,
       null,
       this
@@ -156,7 +128,7 @@ export default class PlayState extends SpriteState {
   }
 
   onHeroVsRing(hero, ring) {
-    this.sfx.ring.play();
+    this.sfx.energy.play();
     ring.kill();
     this.ringCount++;
   }
@@ -183,7 +155,7 @@ export default class PlayState extends SpriteState {
     if (hero.body.velocity.y !== 0) {
       enemy.die();
       hero.bounce();
-      this.sfx.pop.play();
+      this.sfx.destroy.play();
       this.score += 100;
     } else {
       this.handleDamage(hero);
@@ -194,18 +166,7 @@ export default class PlayState extends SpriteState {
     }
   }
 
-  onHeroVsSpring(hero, spring) {
-    if (hero.body.velocity.y > 0) {
-      spring.animations.play("jump");
-      let didJump = this.hero.jump(900);
-      if (didJump) {
-        this.sfx.spring.play();
-      }
-    }
-  }
-
   onHeroVsFinish(hero, finish) {
-    this.sfx.finish.play();
     finish.animations.play("open");
     // play animation and change to the next level when it ends
     hero.freeze();
@@ -237,15 +198,14 @@ export default class PlayState extends SpriteState {
   loadLevel(data) {
     // create all the groups/layers that we need
     this.bgDecoration = this.game.add.group();
-    this.rings = this.game.add.group();
+    this.energy = this.game.add.group();
     this.enemies = this.game.add.group();
     this.enemyWalls = this.game.add.group();
     this.enemyWalls.visible = false;
     this.movingBlocks = this.game.add.group();
-    this.fireball = this.game.add.group();
-    this.lava = this.game.add.group();
-    this.spring = this.game.add.group();
-    this.spike = this.game.add.group();
+    this.blast = this.game.add.group();
+    this.oil = this.game.add.group();
+    this.flame = this.game.add.group();
     this.platforms = this.game.add.group();
     this.finish = this.game.add.group();
     // spawn
@@ -255,14 +215,13 @@ export default class PlayState extends SpriteState {
     });
     data.platforms.forEach(this.spawnPlatform, this);
     data.movingBlocks.forEach(this.spawnMovingBlocks, this);
-    data.lava.forEach(this.spawnLava, this);
-    data.spring.forEach(this.spawnSpring, this);
-    data.rings.forEach(this.spawnRings, this);
-    this.spawnSpike({
-      spike: data.spike,
+    data.oil.forEach(this.spawnOil, this);
+    data.energy.forEach(this.spawnEnergy, this);
+    this.spawnFlame({
+      flame: data.flame,
     });
-    this.spawnFireball({
-      fireball: data.fireball,
+    this.spawnBlast({
+      blast: data.blast,
     });
     this.spawnFinish({
       finish: data.finish,
@@ -278,77 +237,56 @@ export default class PlayState extends SpriteState {
   }
 
   createHud() {
-    const NUMBERS_STR = "0123456789:";
-    const LETTERS_STR = "SCORINGTME";
+    const NUMBERS_STR = "0123456789";
+    const LETTERS_STR = "SCORENGY";
     this.scoreText = this.game.add.retroFont(
       "font:letters",
-      14,
-      17,
-      LETTERS_STR,
-      10
-    );
-    this.timeText = this.game.add.retroFont(
-      "font:letters",
-      14,
-      17,
+      20,
+      20,
       LETTERS_STR,
       10
     );
     this.ringText = this.game.add.retroFont(
       "font:letters",
-      14,
-      17,
+      20,
+      20,
       LETTERS_STR,
       10
     );
     this.scoreNumber = this.game.add.retroFont(
       "font:numbers",
-      14,
-      17,
+      20,
+      20,
       NUMBERS_STR,
-      11
-    );
-    this.timeNumber = this.game.add.retroFont(
-      "font:numbers",
-      14,
-      17,
-      NUMBERS_STR,
-      11
+      10
     );
     this.ringNumber = this.game.add.retroFont(
       "font:numbers",
-      14,
-      17,
+      20,
+      20,
       NUMBERS_STR,
-      11
+      10
     );
 
     this.scoreText.text = `SCORE`;
-    this.timeText.text = `TIME`;
-    this.ringText.text = `RINGS`;
+    this.ringText.text = `ENERGY`;
 
     let scoreTextImage = this.game.make.image(50, 25, this.scoreText);
-    let timeTextImage = this.game.make.image(50, 25, this.timeText);
-    let ringsTextImage = this.game.make.image(50, 25, this.ringText);
+    let energyTextImage = this.game.make.image(50, 25, this.ringText);
     let scoreNumberImage = this.game.make.image(50, 25, this.scoreNumber);
-    let timeNumberImage = this.game.make.image(50, 25, this.timeNumber);
-    let ringsNumberImage = this.game.make.image(50, 25, this.ringNumber);
+    let energyNumberImage = this.game.make.image(50, 25, this.ringNumber);
 
     this.hud = this.game.add.group();
     this.hud.add(scoreTextImage);
-    this.hud.add(timeTextImage);
-    this.hud.add(ringsTextImage);
+    this.hud.add(energyTextImage);
     this.hud.add(scoreNumberImage);
-    this.hud.add(timeNumberImage);
-    this.hud.add(ringsNumberImage);
+    this.hud.add(energyNumberImage);
 
     this.hud.position.set(10, 10);
     this.hud.children[0].position.set(20, 20);
     this.hud.children[1].position.set(20, 50);
-    this.hud.children[2].position.set(20, 80);
-    this.hud.children[3].position.set(140, 20);
-    this.hud.children[4].position.set(100, 50);
-    this.hud.children[5].position.set(140, 80);
+    this.hud.children[2].position.set(160, 20);
+    this.hud.children[3].position.set(160, 50);
     console.log(this.hud.children[3]);
   }
 }

@@ -1,8 +1,8 @@
 import Phaser from "phaser";
 
-export default class Fireball extends Phaser.Sprite {
+export default class Blast extends Phaser.Sprite {
   constructor(game, x, y, height, velocity) {
-    super(game, x, y, "fireball");
+    super(game, x, y, "blast");
     this.anchor.set(0.5);
     this.maxHeight = y;
     this.minHeight = y - height;
