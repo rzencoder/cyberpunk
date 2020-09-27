@@ -20,8 +20,24 @@ export default class LoadingState {
     this.game.load.image("block:8x1", "../../assets/images/block8.png");
     this.game.load.image("block:4x1", "../../assets/images/block4.png");
     this.game.load.image("block:2x1", "../../assets/images/block2.png");
-    this.game.load.image("block:1x1", "../../assets/images/moving-block.png");
-    this.game.load.image("blaster", "../../assets/images/blaster.png");
+    this.game.load.image("block:1x1", "../../assets/images/block1.png");
+    this.game.load.image("up-blaster", "../../assets/images/up-blaster.png");
+    this.game.load.image(
+      "down-blaster",
+      "../../assets/images/down-blaster.png"
+    );
+    this.game.load.image(
+      "left-blaster",
+      "../../assets/images/left-blaster.png"
+    );
+    this.game.load.image(
+      "right-blaster",
+      "../../assets/images/right-blaster.png"
+    );
+    this.game.load.image(
+      "still-platform",
+      "../../assets/images/moving-block.png"
+    );
 
     this.game.load.image(
       "moving-block",
@@ -78,7 +94,7 @@ export default class LoadingState {
 
   create() {
     this.game.state.start("play", true, false, {
-      level: 0,
+      level: 1,
     });
   }
 }

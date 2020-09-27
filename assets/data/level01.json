@@ -1,25 +1,27 @@
 {
-  "flame": [
-    { "image": "flame", "x": 500, "y": 340 },
-    { "image": "flame", "x": 280, "y": 120 },
-    { "image": "flame", "x": 440, "y": 120 }
-  ],
+  "flame": [{ "image": "flame", "x": 440, "y": 120 }],
   "platforms": [
     { "image": "block:4x1", "x": 0, "y": 558 },
-    { "image": "block:2x1", "x": 0, "y": 364 },
-    { "image": "block:8x1", "x": 200, "y": 100 },
-    { "image": "block:8x1", "x": 200, "y": 0 },
-    { "image": "block:1x1", "x": 480, "y": 322 },
-    { "image": "block:1x1", "x": 280, "y": 322 },
-    { "image": "block:2x1", "x": 878, "y": 558 },
-    { "image": "block:16x1", "x": 536, "y": 0 },
+    { "image": "block:1x1", "x": 126, "y": 516 },
     { "image": "block:16x1", "x": 606, "y": 154 },
-    { "image": "block:16x1", "x": 606, "y": 42 }
+    { "image": "still-platform", "x": 810, "y": 525 },
+    { "image": "still-platform", "x": 860, "y": 460 },
+    { "image": "still-platform", "x": 910, "y": 400 },
+    { "image": "up-blaster", "x": 620, "y": 545 },
+    { "image": "down-blaster", "x": 620, "y": 322 },
+    { "image": "up-blaster", "x": 350, "y": 545 },
+    { "image": "down-blaster", "x": 350, "y": 322 },
+    { "image": "still-platform", "x": 140, "y": 230 },
+    { "image": "block:4x1", "x": 300, "y": 150 },
+    { "image": "right-blaster", "x": 263, "y": 150 },
+    { "image": "left-blaster", "x": 0, "y": 150 }
   ],
   "movingBlocks": [
-    { "image": "moving-block", "x": 168, "y": 530 },
-    { "image": "moving-block", "x": 836, "y": 530 },
-    { "image": "moving-block", "x": 836, "y": 322 }
+    { "image": "moving-block", "x": 168, "y": 525 },
+    { "image": "moving-block", "x": 750, "y": 525 },
+    { "image": "moving-block", "x": 836, "y": 322 },
+    { "image": "moving-block", "x": 430, "y": 322 },
+    { "image": "moving-block", "x": 180, "y": 322 }
   ],
   "oil": [
     { "image": "oil", "x": 168, "y": 558 },
@@ -38,19 +40,21 @@
     { "image": "oil", "x": 714, "y": 558 },
     { "image": "oil", "x": 756, "y": 558 },
     { "image": "oil", "x": 798, "y": 558 },
-    { "image": "oil", "x": 840, "y": 558 }
+    { "image": "oil", "x": 840, "y": 558 },
+    { "image": "oil", "x": 882, "y": 558 },
+    { "image": "oil", "x": 924, "y": 558 }
   ],
   "decoration": [],
   "energy": [
     { "x": 80, "y": 535 },
     { "x": 110, "y": 535 },
     { "x": 140, "y": 535 },
-    { "x": 500, "y": 510 },
-    { "x": 530, "y": 510 },
-    { "x": 560, "y": 510 },
-    { "x": 375, "y": 260 },
-    { "x": 405, "y": 260 },
-    { "x": 435, "y": 260 },
+    { "x": 470, "y": 500 },
+    { "x": 500, "y": 500 },
+    { "x": 530, "y": 500 },
+    { "x": 470, "y": 280 },
+    { "x": 500, "y": 280 },
+    { "x": 530, "y": 280 },
     { "x": 650, "y": 120 },
     { "x": 680, "y": 120 },
     { "x": 710, "y": 120 }
@@ -63,5 +67,27 @@
     { "image": "drone", "x": 390, "y": 60, "gravity": false }
   ],
   "finish": { "x": 930, "y": 154 },
-  "blast": [{ "x": 530, "y": 570, "height": 190, "velocity": 120 }]
+  "blast": [
+    {
+      "x": 370,
+      "y": 570,
+      "distance": 230,
+      "velocity": 120,
+      "direction": "vertical"
+    },
+    {
+      "x": 640,
+      "y": 570,
+      "distance": 230,
+      "velocity": 140,
+      "direction": "vertical"
+    },
+    {
+      "x": 260,
+      "y": 170,
+      "distance": 250,
+      "velocity": 140,
+      "direction": "horizontal"
+    }
+  ]
 }

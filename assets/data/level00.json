@@ -10,12 +10,12 @@
     { "image": "block:4x1", "x": 300, "y": 120 },
     { "image": "block:2x1", "x": 900, "y": 120 },
     {
-      "image": "block:1x1",
+      "image": "still-platform",
       "x": 810,
       "y": 390
     },
     {
-      "image": "block:1x1",
+      "image": "still-platform",
       "x": 860,
       "y": 460
     },

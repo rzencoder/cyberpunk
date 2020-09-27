@@ -55,8 +55,9 @@ export default class SpriteState {
         this.game,
         blast.x,
         blast.y,
-        blast.height,
-        blast.velocity
+        blast.distance,
+        blast.velocity,
+        blast.direction
       );
       this.blast.add(sprite);
     }, this);
