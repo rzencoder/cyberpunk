@@ -10,15 +10,15 @@ export default class PlayState extends SpriteState {
       right: Phaser.KeyCode.RIGHT,
       up: Phaser.KeyCode.UP,
     });
-    this.ringCount = 0;
-    this.score = 0;
+    this.energyCount = 0;
+    this.score = data.score || 0;
     this.level = (data.level || 0) % LEVEL_COUNT;
     this.bgm = this.game.add.audio("bgm");
     this.bgm.loopFull();
   }
 
   create() {
-    // fade in (from black)
+    // fade in from black
     this.camera.flash("#000000");
     // create sound entities
     this.sfx = {
@@ -41,7 +41,7 @@ export default class PlayState extends SpriteState {
     this.handleInput();
     // update scoreboards
     this.scoreNumber.text = `${this.score}`;
-    this.ringNumber.text = `${this.ringCount}`;
+    this.energyNumber.text = `${this.energyCount}`;
   }
 
   shutdown() {
@@ -92,7 +92,7 @@ export default class PlayState extends SpriteState {
     this.game.physics.arcade.overlap(
       this.hero,
       this.energy,
-      this.onHeroVsRing,
+      this.onHeroVsEnergy,
       null,
       this
     );
@@ -127,14 +127,14 @@ export default class PlayState extends SpriteState {
     }
   }
 
-  onHeroVsRing(hero, ring) {
+  onHeroVsEnergy(hero, energy) {
     this.sfx.energy.play();
-    ring.kill();
-    this.ringCount++;
+    energy.kill();
+    this.energyCount++;
   }
 
   handleDamage(hero) {
-    if (this.ringCount === 0 && !hero.invincible) {
+    if (this.energyCount === 0 && !hero.invincible) {
       hero.die();
       this.sfx.dead.play();
       hero.events.onKilled.addOnce(() => {
@@ -144,7 +144,7 @@ export default class PlayState extends SpriteState {
       });
     } else if (hero.invincible) {
     } else {
-      this.ringCount = 0;
+      this.energyCount = 0;
       hero.injure();
       this.sfx.hurt.play();
     }
@@ -161,7 +161,7 @@ export default class PlayState extends SpriteState {
       this.handleDamage(hero);
       // NOTE: bug in phaser in which it modifies 'touching' when
       // checking for overlaps. This undoes that change so enemies don't
-      // 'bounce' agains the hero
+      // 'bounce' against the hero
       enemy.body.touching = enemy.body.wasTouching;
     }
   }
@@ -196,7 +196,7 @@ export default class PlayState extends SpriteState {
   }
 
   loadLevel(data) {
-    // create all the groups/layers that we need
+    // create all the groups/layers
     this.bgDecoration = this.game.add.group();
     this.energy = this.game.add.group();
     this.enemies = this.game.add.group();
@@ -246,7 +246,7 @@ export default class PlayState extends SpriteState {
       LETTERS_STR,
       10
     );
-    this.ringText = this.game.add.retroFont(
+    this.energyText = this.game.add.retroFont(
       "font:letters",
       20,
       20,
@@ -260,7 +260,7 @@ export default class PlayState extends SpriteState {
       NUMBERS_STR,
       10
     );
-    this.ringNumber = this.game.add.retroFont(
+    this.energyNumber = this.game.add.retroFont(
       "font:numbers",
       20,
       20,
@@ -269,12 +269,12 @@ export default class PlayState extends SpriteState {
     );
 
     this.scoreText.text = `SCORE`;
-    this.ringText.text = `ENERGY`;
+    this.energyText.text = `ENERGY`;
 
     let scoreTextImage = this.game.make.image(50, 25, this.scoreText);
-    let energyTextImage = this.game.make.image(50, 25, this.ringText);
+    let energyTextImage = this.game.make.image(50, 25, this.energyText);
     let scoreNumberImage = this.game.make.image(50, 25, this.scoreNumber);
-    let energyNumberImage = this.game.make.image(50, 25, this.ringNumber);
+    let energyNumberImage = this.game.make.image(50, 25, this.energyNumber);
 
     this.hud = this.game.add.group();
     this.hud.add(scoreTextImage);
@@ -287,6 +287,5 @@ export default class PlayState extends SpriteState {
     this.hud.children[1].position.set(20, 50);
     this.hud.children[2].position.set(160, 20);
     this.hud.children[3].position.set(160, 50);
-    console.log(this.hud.children[3]);
   }
 }

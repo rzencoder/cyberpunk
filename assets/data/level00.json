@@ -2,7 +2,7 @@
   "platforms": [
     { "image": "block:4x1", "x": 0, "y": 558 },
     { "image": "block:4x1", "x": 294, "y": 558 },
-    { "image": "block:4x1", "x": 294, "y": 516 },
+    { "image": "blaster", "x": 360, "y": 524 },
     { "image": "block:16x1", "x": 588, "y": 558 },
     { "image": "block:4x1", "x": 588, "y": 350 },
     { "image": "block:4x1", "x": 294, "y": 300 },
@@ -47,40 +47,32 @@
     { "image": "oil", "x": 546, "y": 558 }
   ],
   "flame": [
-    { "image": "flame", "x": 680, "y": 577, "duration": 1100 },
-    { "image": "flame", "x": 830, "y": 577, "duration": 1500 },
     { "image": "flame", "x": 620, "y": 373, "duration": 1400 },
-    { "image": "flame", "x": 330, "y": 323, "duration": 1500 },
-    { "image": "flame", "x": 440, "y": 140, "duration": 1320 }
+    { "image": "flame", "x": 320, "y": 323, "duration": 1500 },
+    { "image": "flame", "x": 390, "y": 140, "duration": 1320 }
   ],
   "decoration": [],
   "energy": [
     { "x": 70, "y": 535 },
     { "x": 100, "y": 535 },
     { "x": 130, "y": 535 },
-    { "x": 350, "y": 495 },
-    { "x": 380, "y": 495 },
-    { "x": 410, "y": 495 },
-    { "x": 670, "y": 325 },
-    { "x": 700, "y": 325 },
-    { "x": 730, "y": 325 },
-    { "x": 50, "y": 220 },
-    { "x": 80, "y": 220 },
-    { "x": 110, "y": 220 },
+    { "x": 740, "y": 535 },
+    { "x": 770, "y": 535 },
+    { "x": 800, "y": 535 },
+    { "x": 355, "y": 280 },
+    { "x": 385, "y": 280 },
+    { "x": 415, "y": 280 },
     { "x": 650, "y": 85 },
     { "x": 680, "y": 85 },
     { "x": 710, "y": 85 }
   ],
   "hero": { "x": 30, "y": 535 },
   "enemies": [
-    { "image": "drone", "x": 700, "y": 540, "gravity": false },
-    { "image": "drone", "x": 700, "y": 280, "gravity": false },
-    { "image": "drone", "x": 240, "y": 190, "gravity": false },
-    { "image": "drone", "x": 800, "y": 60, "gravity": false }
+    { "image": "turret", "x": 700, "y": 540, "gravity": true, "velocity": 60 },
+    { "image": "drone", "x": 700, "y": 280, "gravity": false, "velocity": 100 },
+    { "image": "turret", "x": 400, "y": 90, "gravity": true, "velocity": 60 },
+    { "image": "drone", "x": 600, "y": 70, "gravity": false, "velocity": 100 }
   ],
   "finish": { "x": 930, "y": 120 },
-  "blast": [
-    { "x": 231, "y": 570, "height": 350, "velocity": 220 },
-    { "x": 525, "y": 570, "height": 280, "velocity": 200 }
-  ]
+  "blast": [{ "x": 380, "y": 570, "height": 190, "velocity": 150 }]
 }

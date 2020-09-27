@@ -13,7 +13,8 @@ export default class SpriteState {
         enemy.x,
         enemy.y,
         enemy.image,
-        enemy.gravity
+        enemy.gravity,
+        enemy.velocity
       );
       this.enemies.add(sprite);
     }, this);
@@ -62,8 +63,14 @@ export default class SpriteState {
   }
 
   spawnFlame(data) {
-    data.flame.forEach(function (s) {
-      let sprite = new Flame(this.game, s.x, s.y, s.image, s.duration);
+    data.flame.forEach(function (flame) {
+      let sprite = new Flame(
+        this.game,
+        flame.x,
+        flame.y,
+        flame.image,
+        flame.duration
+      );
       this.flame.add(sprite);
     }, this);
   }

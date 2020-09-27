@@ -20,7 +20,9 @@ export default class LoadingState {
     this.game.load.image("block:8x1", "../../assets/images/block8.png");
     this.game.load.image("block:4x1", "../../assets/images/block4.png");
     this.game.load.image("block:2x1", "../../assets/images/block2.png");
-    this.game.load.image("block:1x1", "../../assets/images/block1.png");
+    this.game.load.image("block:1x1", "../../assets/images/moving-block.png");
+    this.game.load.image("blaster", "../../assets/images/blaster.png");
+
     this.game.load.image(
       "moving-block",
       "../../assets/images/moving-block.png"
@@ -42,6 +44,12 @@ export default class LoadingState {
     this.game.load.spritesheet(
       "drone",
       "../../assets/images/drone.png",
+      40,
+      38
+    );
+    this.game.load.spritesheet(
+      "turret",
+      "../../assets/images/turret.png",
       40,
       38
     );
