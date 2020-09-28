@@ -1,9 +1,13 @@
 {
-  "flame": [{ "image": "flame", "x": 440, "y": 120 }],
+  "flame": [
+    { "image": "flame", "x": 670, "y": 167, "duration": 1400 },
+    { "image": "flame", "x": 770, "y": 167, "duration": 1100 },
+    { "image": "flame", "x": 870, "y": 167, "duration": 1250 }
+  ],
   "platforms": [
     { "image": "block:4x1", "x": 0, "y": 558 },
     { "image": "block:1x1", "x": 126, "y": 516 },
-    { "image": "block:16x1", "x": 606, "y": 154 },
+    { "image": "block:16x1", "x": 606, "y": 148 },
     { "image": "still-platform", "x": 810, "y": 525 },
     { "image": "still-platform", "x": 860, "y": 460 },
     { "image": "still-platform", "x": 910, "y": 400 },
@@ -11,8 +15,8 @@
     { "image": "down-blaster", "x": 620, "y": 322 },
     { "image": "up-blaster", "x": 350, "y": 545 },
     { "image": "down-blaster", "x": 350, "y": 322 },
-    { "image": "still-platform", "x": 140, "y": 230 },
-    { "image": "block:4x1", "x": 300, "y": 150 },
+    { "image": "still-platform", "x": 140, "y": 240 },
+    { "image": "block:4x1", "x": 300, "y": 148 },
     { "image": "right-blaster", "x": 263, "y": 150 },
     { "image": "left-blaster", "x": 0, "y": 150 }
   ],
@@ -55,18 +59,18 @@
     { "x": 470, "y": 280 },
     { "x": 500, "y": 280 },
     { "x": 530, "y": 280 },
-    { "x": 650, "y": 120 },
-    { "x": 680, "y": 120 },
-    { "x": 710, "y": 120 }
+    { "x": 350, "y": 120 },
+    { "x": 380, "y": 120 },
+    { "x": 410, "y": 120 }
   ],
   "hero": { "x": 21, "y": 525 },
   "enemies": [
-    { "image": "drone", "x": 700, "y": 140, "gravity": false },
-    { "image": "drone", "x": 900, "y": 290, "gravity": false },
-    { "image": "drone", "x": 100, "y": 260, "gravity": false },
-    { "image": "drone", "x": 390, "y": 60, "gravity": false }
+    { "image": "drone", "x": 930, "y": 290, "gravity": false, "velocity": 100 },
+    { "image": "drone", "x": 550, "y": 290, "gravity": false, "velocity": 100 },
+    { "image": "turret", "x": 350, "y": 130, "gravity": true, "velocity": 60 },
+    { "image": "turret", "x": 750, "y": 130, "gravity": true, "velocity": 60 }
   ],
-  "finish": { "x": 930, "y": 154 },
+  "finish": { "x": 930, "y": 140 },
   "blast": [
     {
       "x": 370,

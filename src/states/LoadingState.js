@@ -49,12 +49,7 @@ export default class LoadingState {
       30,
       38
     );
-    this.game.load.spritesheet(
-      "blast",
-      "../../assets/images/blast.png",
-      16,
-      22
-    );
+    this.game.load.image("blast", "../../assets/images/blast.png", 16, 22);
     // animations
     this.game.load.spritesheet("hero", "../../assets/images/hero.png", 50, 52);
     this.game.load.spritesheet(
@@ -94,7 +89,7 @@ export default class LoadingState {
 
   create() {
     this.game.state.start("play", true, false, {
-      level: 1,
+      level: 2,
     });
   }
 }

@@ -1,14 +1,25 @@
-# Cyberpunk Javascript Game
+# Cyberpunk Platformer Game
 
 #### Demo: https://rzencoder.github.io/cyberpunk/
 
 Added different assets to my previous Sonic game. Created this platform game to help me learn object-orientated Javascript using the phaser.io framework.
 
-#### Controls:
+## Controls:
 
 - Left-Arrow: Move Left
 - Right-Arrow: Move Right
 - Up-Arrow: Jump
+
+## Setup
+
+To run this project, install it locally using npm:
+
+```
+$ npm install
+$ npm run dev
+```
+
+## Credits
 
 #### Image Credits
 

@@ -2,7 +2,7 @@
   "platforms": [
     { "image": "block:4x1", "x": 0, "y": 558 },
     { "image": "block:4x1", "x": 294, "y": 558 },
-    { "image": "blaster", "x": 360, "y": 524 },
+    { "image": "up-blaster", "x": 360, "y": 524 },
     { "image": "block:16x1", "x": 588, "y": 558 },
     { "image": "block:4x1", "x": 588, "y": 350 },
     { "image": "block:4x1", "x": 294, "y": 300 },
@@ -73,6 +73,14 @@
     { "image": "turret", "x": 400, "y": 90, "gravity": true, "velocity": 60 },
     { "image": "drone", "x": 600, "y": 70, "gravity": false, "velocity": 100 }
   ],
-  "finish": { "x": 930, "y": 120 },
-  "blast": [{ "x": 380, "y": 570, "height": 190, "velocity": 150 }]
+  "finish": { "x": 930, "y": 110 },
+  "blast": [
+    {
+      "x": 380,
+      "y": 570,
+      "distance": 190,
+      "velocity": 150,
+      "direction": "vertical"
+    }
+  ]
 }

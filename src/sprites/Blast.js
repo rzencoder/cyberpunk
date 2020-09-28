@@ -22,7 +22,7 @@ export default class Blast extends Phaser.Sprite {
 
     this.direction = direction;
     // animations
-    this.animations.add("fire", [1, 0], 8);
+    this.animations.add("fire", [0], 8);
     this.animations.play("fire");
   }
 
