@@ -3,7 +3,6 @@ import Phaser from "phaser";
 export default class Enemy extends Phaser.Sprite {
   constructor(game, x, y, image, gravity, velocity) {
     super(game, x, y, image);
-    console.log(velocity);
     this.anchor.set(0.5);
     this.game.physics.enable(this);
     this.body.collideWorldBounds = true;

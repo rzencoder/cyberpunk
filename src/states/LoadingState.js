@@ -89,7 +89,7 @@ export default class LoadingState {
 
   create() {
     this.game.state.start("play", true, false, {
-      level: 2,
+      level: 0,
     });
   }
 }
