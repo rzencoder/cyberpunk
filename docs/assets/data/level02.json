@@ -1,77 +1,118 @@
 {
-    "platforms": [
-        {"image": "stone:16x1", "x": 70, "y": 558},
-        {"image": "stone:16x1", "x": 0, "y": 432},
-        {"image": "stone:2x1", "x": 0, "y": 558},
-        {"image": "stone:2x1", "x": 912, "y": 558},
-        {"image": "stone:2x1", "x": 605, "y": 432},
-        {"image": "stone:2x1", "x": 155, "y": 516},
-        {"image": "stone:2x1", "x": 292, "y": 474},
-        {"image": "stone:2x1", "x": 426, "y": 516},
-        {"image": "stone:2x1", "x": 605, "y": 390},
-        {"image": "stone:2x1", "x": 0, "y": 390},
-        {"image": "stone:4x1", "x": 100, "y": 160},
-        {"image": "stone:1x1", "x": 380, "y": 118},    
-        {"image": "stone:1x1", "x": 780, "y": 118},
-        {"image": "stone:2x1", "x": 918, "y": 118}       
-    ],
-    "movingBlocks": [
-        {"image": "block", "x": 43, "y": 360},
-        {"image": "block", "x": 564, "y": 118}
-    ],
-    "lava": [
-        {"image": "lava", "x": 702, "y": 558},
-        {"image": "lava", "x": 744, "y": 558},
-        {"image": "lava", "x": 786, "y": 558},
-        {"image": "lava", "x": 828, "y": 558},
-        {"image": "lava", "x": 870, "y": 558},  
-        {"image": "lava", "x": 42, "y": 390},
-        {"image": "lava", "x": 84, "y": 390},
-        {"image": "lava", "x": 126, "y": 390},
-        {"image": "lava", "x": 168, "y": 390},
-        {"image": "lava", "x": 210, "y": 390},
-        {"image": "lava", "x": 252, "y": 390},
-        {"image": "lava", "x": 294, "y": 390},
-        {"image": "lava", "x": 336, "y": 390},
-        {"image": "lava", "x": 378, "y": 390},
-        {"image": "lava", "x": 420, "y": 390},
-        {"image": "lava", "x": 462, "y": 390},
-        {"image": "lava", "x": 504, "y": 390},
-        {"image": "lava", "x": 546, "y": 390},
-        {"image": "lava", "x": 588, "y": 390}      
-    ],
-    "spike": [
-        {"image": "spike3", "x": 265, "y": 575},
-        {"image": "spike3", "x": 400, "y": 575},
-        {"image": "spike", "x": 400, "y": 133},
-        {"image": "spike", "x": 800, "y": 133}
-    ],
-    "decoration": [
-        
-    ],
-    "rings": [
-        {"x": 167, "y": 500}, {"x": 197, "y": 500}, {"x": 227, "y": 500},
-        {"x": 437, "y": 500}, {"x": 467, "y": 500}, {"x": 497, "y": 500},
-        {"x": 120, "y": 140}, {"x": 150, "y": 140}, {"x": 180, "y": 140},
-        {"x": 615, "y": 375}, {"x": 645, "y": 375}, {"x": 675, "y": 375}
-    ],
-    "hero": {"x": 21, "y": 525},
-    "enemies": [
-        {"image": "bug", "x": 700, "y": 540, "gravity": true},
-        {"image": "bug", "x": 110, "y": 140, "gravity": true},
-        {"image": "bat", "x": 800, "y": 50, "gravity": false},
-        {"image": "bat", "x": 60, "y": 300, "gravity": false},
-        {"image": "bat", "x": 900, "y": 500, "gravity": false}       
-    ],
-    "finish": {"x": 940, "y": 120},
-    "spring": [
-        {"x": 920, "y": 542},
-        {"x": 15, "y": 374}
-    ],
-    "fireball": [
-        {"x": 780, "y": 558, "height": 200, "velocity": 150},
-        {"x": 850, "y": 558, "height": 250, "velocity": 220},
-        {"x": 310, "y": 380, "height": 300, "velocity": 220},
-        {"x": 500, "y": 380, "height": 300, "velocity": 220}
-    ]
+  "platforms": [
+    { "image": "block:16x1", "x": 70, "y": 558 },
+    { "image": "block:16x1", "x": 0, "y": 410 },
+    { "image": "block:2x1", "x": 0, "y": 558 },
+    { "image": "block:2x1", "x": 155, "y": 516 },
+    { "image": "block:2x1", "x": 292, "y": 450 },
+    { "image": "block:2x1", "x": 426, "y": 516 },
+    { "image": "block:2x1", "x": 588, "y": 370 },
+    { "image": "block:1x1", "x": 0, "y": 370 },
+    { "image": "block:1x1", "x": 752, "y": 150 },
+    { "image": "block:4x1", "x": 794, "y": 150 },
+    { "image": "still-platform", "x": 820, "y": 480 },
+    { "image": "still-platform", "x": 905, "y": 410 },
+    { "image": "still-platform", "x": 735, "y": 370 },
+    { "image": "left-blaster", "x": 0, "y": 335 },
+    { "image": "right-blaster", "x": 592, "y": 335 },
+    { "image": "block:1x1", "x": 630, "y": 332 },
+    { "image": "still-platform", "x": 80, "y": 270 },
+    { "image": "still-platform", "x": 20, "y": 190 },
+    { "image": "block:4x1", "x": 180, "y": 150 },
+    { "image": "up-blaster", "x": 780, "y": 535 },
+    { "image": "up-blaster", "x": 862, "y": 535 },
+    { "image": "down-blaster", "x": 780, "y": 192 },
+    { "image": "down-blaster", "x": 862, "y": 192 },
+    { "image": "block:1x1", "x": 430, "y": 150 },
+    { "image": "block:1x1", "x": 630, "y": 150 },
+    { "image": "left-blaster", "x": 322, "y": 112 },
+    { "image": "right-blaster", "x": 740, "y": 112 }
+  ],
+  "movingBlocks": [
+    { "image": "moving-block", "x": 50, "y": 366 },
+    { "image": "moving-block", "x": 540, "y": 366 },
+    { "image": "moving-block", "x": 530, "y": 150 }
+  ],
+  "oil": [
+    { "image": "oil", "x": 744, "y": 558 },
+    { "image": "oil", "x": 786, "y": 558 },
+    { "image": "oil", "x": 828, "y": 558 },
+    { "image": "oil", "x": 870, "y": 558 },
+    { "image": "oil", "x": 912, "y": 558 },
+    { "image": "oil", "x": 950, "y": 558 },
+    { "image": "oil", "x": 42, "y": 375 },
+    { "image": "oil", "x": 84, "y": 375 },
+    { "image": "oil", "x": 126, "y": 375 },
+    { "image": "oil", "x": 168, "y": 375 },
+    { "image": "oil", "x": 210, "y": 375 },
+    { "image": "oil", "x": 252, "y": 375 },
+    { "image": "oil", "x": 294, "y": 375 },
+    { "image": "oil", "x": 336, "y": 375 },
+    { "image": "oil", "x": 378, "y": 375 },
+    { "image": "oil", "x": 420, "y": 375 },
+    { "image": "oil", "x": 462, "y": 375 },
+    { "image": "oil", "x": 504, "y": 375 },
+    { "image": "oil", "x": 546, "y": 375 }
+  ],
+  "flame": [
+    { "image": "flame", "x": 265, "y": 578, "duration": 1400 },
+    { "image": "flame", "x": 400, "y": 578, "duration": 1250 },
+    { "image": "flame", "x": 200, "y": 170, "duration": 1500 },
+    { "image": "flame", "x": 452, "y": 170, "duration": 1320 },
+    { "image": "flame", "x": 652, "y": 170, "duration": 1600 }
+  ],
+  "decoration": [],
+  "energy": [
+    { "x": 167, "y": 500 },
+    { "x": 197, "y": 500 },
+    { "x": 227, "y": 500 },
+    { "x": 437, "y": 500 },
+    { "x": 467, "y": 500 },
+    { "x": 497, "y": 500 },
+    { "x": 320, "y": 330 },
+    { "x": 350, "y": 330 },
+    { "x": 380, "y": 330 },
+    { "x": 520, "y": 110 },
+    { "x": 550, "y": 110 },
+    { "x": 580, "y": 110 }
+  ],
+  "hero": { "x": 21, "y": 525 },
+  "enemies": [
+    { "image": "drone", "x": 600, "y": 60, "gravity": false, "velocity": 100 },
+    { "image": "drone", "x": 500, "y": 300, "gravity": false, "velocity": 100 },
+    { "image": "turret", "x": 600, "y": 530, "gravity": true, "velocity": 60 },
+    { "image": "turret", "x": 250, "y": 120, "gravity": true, "velocity": 60 },
+    { "image": "turret", "x": 850, "y": 120, "gravity": true, "velocity": 60 }
+  ],
+  "finish": { "x": 930, "y": 140 },
+  "blast": [
+    {
+      "x": 800,
+      "y": 558,
+      "distance": 385,
+      "velocity": 170,
+      "direction": "vertical"
+    },
+    {
+      "x": 883,
+      "y": 558,
+      "distance": 385,
+      "velocity": 190,
+      "direction": "vertical"
+    },
+    {
+      "x": 605,
+      "y": 354,
+      "distance": 590,
+      "velocity": 190,
+      "direction": "horizontal"
+    },
+    {
+      "x": 760,
+      "y": 130,
+      "distance": 430,
+      "velocity": 170,
+      "direction": "horizontal"
+    }
+  ]
 }
