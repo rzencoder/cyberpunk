@@ -11,7 +11,7 @@ window.onload = function () {
   let game = new Phaser.Game(
     config.gameWidth,
     config.gameHeight,
-    Phaser.AUTO,
+    Phaser.CANVAS,
     "game"
   );
   game.state.add("play", PlayState);
